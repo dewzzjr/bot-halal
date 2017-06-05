@@ -1,0 +1,19 @@
+{
+  "name": "bot-halal",
+  "version": "1.0.0",
+  "description": "tugas pemrograman integratif tentang data makanan halal",
+  "main": "index.js",
+  "engines": {
+    "node": "4.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dewa dan Nia",
+  "license": "ISC",
+  "dependencies": {
+    "sparql": "^0.1.3",
+    "restify": "^4.3.0",
+    "botbuilder":"^3.8.3"
+  }
+}
