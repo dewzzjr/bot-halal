@@ -48,10 +48,11 @@ bot.dialog('daftarMakanan', function (session) {
         var result = res.results.bindings;
 
         var jumlah = 5;
-        var buttons;
+        var buttons = new Array();
         var i;
         console.log("length :" + result.length);
         // Create cards
+        /*
         for (i = 0; i < (result.length / jumlah) - 1; i++) {
           buttons = new Array();
           for (var j = 0; j < 5; j++) {
@@ -61,9 +62,9 @@ bot.dialog('daftarMakanan', function (session) {
           }
           attachments.push(
             new builder.HeroCard(session)
-              .title("Halal Food " + i)
+              .title("Halal Food " + i+1)
               .subtitle("Menampilkan daftar Makanan Halal yang kami miliki")
-              .images([builder.CardImage.create(session, 'http://halal.wg.ugm.ac.id/foto_berita/halal.jpg')])
+              //.images([builder.CardImage.create(session, 'http://halal.wg.ugm.ac.id/foto_berita/halal.jpg')])
               .buttons(buttons)
             );
             console.log("OK "+ i);
@@ -79,11 +80,22 @@ bot.dialog('daftarMakanan', function (session) {
         }
         attachments.push(
           new builder.HeroCard(session)
-            .title("Halal Food " + i)
+            .title("Halal Food " + i+1)
             .subtitle("Menampilkan daftar Makanan Halal yang kami miliki")
-            .images([builder.CardImage.create(session, 'http://halal.wg.ugm.ac.id/foto_berita/halal.jpg')])
+            //.images([builder.CardImage.create(session, 'http://halal.wg.ugm.ac.id/foto_berita/halal.jpg')])
             .buttons(buttons)
           );
+          */
+          for (var index = 0; index < result.length; index++ ) {
+            buttons.push(builder.CardAction.imBack(session, "bahan " + result[index].food.value, result[index].food.value));
+          }
+          attachments.push(
+            new builder.HeroCard(session)
+              .title("Halal Food " + i+1)
+              .subtitle("Menampilkan daftar Makanan Halal yang kami miliki")
+              //.images([builder.CardImage.create(session, 'http://halal.wg.ugm.ac.id/foto_berita/halal.jpg')])
+              .buttons(buttons)
+            );
         //Create Message
         var msg = new builder.Message(session);
         msg.attachmentLayout(builder.AttachmentLayout.carousel)
