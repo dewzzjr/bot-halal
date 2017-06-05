@@ -43,6 +43,7 @@ var bot = new builder.UniversalBot(connector, function (session) {
 
 // Add dialog to return list of shirts available
 bot.dialog('daftarMakanan', function (session) {
+  session.send("Data sedang diproses...");
     client.query(query_makan, function(err, res) {
         var attachments = new Array();
         var result = res.results.bindings;
@@ -91,7 +92,7 @@ bot.dialog('daftarMakanan', function (session) {
           }
           attachments.push(
             new builder.HeroCard(session)
-              .title("Halal Food " + i+1)
+              .title("Halal Food")
               .subtitle("Menampilkan daftar Makanan Halal yang kami miliki")
               //.images([builder.CardImage.create(session, 'http://halal.wg.ugm.ac.id/foto_berita/halal.jpg')])
               .buttons(buttons)
